@@ -17,6 +17,49 @@ export const tokensDark = {
   },
   primary: {
     // blue
+    100: "#d3d4de",
+    200: "#a6a9be",
+    300: "#7a7f9d",
+    400: "#4d547d",
+    500: "#666666",
+    600: "#292929", // manually adjusted
+    700: "#141937",
+    800: "#0d1025",
+    900: "#000000",
+  },
+  secondary: {
+    // yellow
+    50: "#f0f0f0", // manually adjusted
+    100: "#fff6e0",
+    200: "#7DF9FF",
+    300: "#7DF9FF",
+    400: "#7DF9FF",
+    500: "#00AAE4",
+    600: "#cca752",
+    700: "#997d3d",
+    800: "#665429",
+    900: "#332a14",
+  },
+};
+
+export const tokensLight = {
+  grey: {
+    0: "#ffffff", // manually adjusted
+    10: "#f6f6f6", // manually adjusted
+    50: "#f0f0f0", // manually adjusted
+    100: "#e0e0e0",
+    200: "#c2c2c2",
+    300: "#a3a3a3",
+    400: "#858585",
+    500: "#666666",
+    600: "#525252",
+    700: "#3d3d3d",
+    800: "#292929",
+    900: "#141414",
+    1000: "#000000", // manually adjusted
+  },
+  primary: {
+    // blue
     100: "#d3 d4de",
     200: "#a6a9be",
     300: "#7a7f9d",
@@ -43,21 +86,21 @@ export const tokensDark = {
 };
 
 // function that reverses the color palette
-function reverseTokens(tokensDark) {
-  const reversedTokens = {};
-  Object.entries(tokensDark).forEach(([key, val]) => {
-    const keys = Object.keys(val);
-    const values = Object.values(val);
-    const length = keys.length;
-    const reversedObj = {};
-    for (let i = 0; i < length; i++) {
-      reversedObj[keys[i]] = values[length - i - 1];
-    }
-    reversedTokens[key] = reversedObj;
-  });
-  return reversedTokens;
-}
-export const tokensLight = reverseTokens(tokensDark);
+// function reverseTokens(tokensDark) {
+//   const reversedTokens = {};
+//   Object.entries(tokensDark).forEach(([key, val]) => {
+//     const keys = Object.keys(val);
+//     const values = Object.values(val);
+//     const length = keys.length;
+//     const reversedObj = {};
+//     for (let i = 0; i < length; i++) {
+//       reversedObj[keys[i]] = values[length - i - 1];
+//     }
+//     reversedTokens[key] = reversedObj;
+//   });
+//   return reversedTokens;
+// }
+// export const tokensLight = reverseTokens(tokensDark);
 
 // mui theme settings
 export const themeSettings = (mode) => {
