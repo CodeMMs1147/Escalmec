@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "data-uri-to-buffer": "^5.0.1"
+  }
+}
