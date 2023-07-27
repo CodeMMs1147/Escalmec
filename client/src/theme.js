@@ -56,7 +56,7 @@ export const tokensLight = {
     700: "#3d3d3d",
     800: "#292929",
     900: "#141414",
-    1000: "#000000", // manually adjusted
+    1000: "#ffffff", // manually adjusted
   },
   primary: {
     // blue
@@ -64,18 +64,18 @@ export const tokensLight = {
     200: "#a6a9be",
     300: "#7a7f9d",
     400: "#4d547d",
-    500: "#0045A4",
+    500: "#e0e0e0",
     600: "#ffffff", // manually adjusted
     700: "#141937",
     800: "#0d1025",
-    900: "#000000",
+    900: "#ffffff",
   },
   secondary: {
     // yellow
     50: "#f0f0f0", // manually adjusted
-    100: "#fff6e0",
-    200: "#7DF9FF",
-    300: "#7DF9FF",
+    100: "#0045A4",
+    200: "#0045A4",
+    300: "#0045A4",
     400: "#7DF9FF",
     500: "#00AAE4",
     600: "#cca752",
