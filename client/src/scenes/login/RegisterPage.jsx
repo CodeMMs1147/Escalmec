@@ -27,7 +27,7 @@ function Register() {
   }, [isAuthenticated]);
 
   return (
-    <Container maxWidth="md" sx={{ border: 1, borderRadius: 5, padding: 3, marginTop: 5 }}>
+    <Container maxWidth="md" sx={{ border: 1, borderRadius: 5, borderColor: '#7DF9FF', padding: 3, marginTop: 5 }}>
     {registerErrors.map((error, i) => (
       <Message message={error} key={i} />
     ))}
@@ -44,7 +44,7 @@ function Register() {
         name="email"
         placeholder="Escribe tu nombre de usuario"
         inputProps={register("username")}
-        sx={{ width: '100%', backgroundColor: '#141937', borderRadius: 1, borderColor: '#ffe3a3', marginTop: 2 }}
+        sx={{ width: '100%', backgroundColor: '#141414', borderRadius: 1, borderColor: '#ffe3a3', marginTop: 2 }}
       />
       {errors.username?.message && (
         <p style={{ color: "#EF4444" }}>{errors.username?.message}</p>
@@ -56,7 +56,7 @@ function Register() {
         name="email"
         placeholder="youremail@domain.tld"
         inputProps={register("email")}
-        sx={{ width: '100%', backgroundColor: '#141937', borderRadius: 1, borderColor: '#ffe3a3', marginTop: 2 }}
+        sx={{ width: '100%', backgroundColor: '#141414', borderRadius: 1, borderColor: '#ffe3a3', marginTop: 2 }}
       />
       {errors.email?.message && (
         <p style={{ color: "#EF4444" }}>{errors.email?.message}</p>
@@ -68,7 +68,7 @@ function Register() {
         name="password"
         placeholder="********"
         inputProps={register("password")}
-        sx={{ width: '100%', backgroundColor: '#141937', borderRadius: 1, borderColor: '#ffe3a3', marginTop: 2 }}
+        sx={{ width: '100%', backgroundColor: '#141414', borderRadius: 1, borderColor: '#ffe3a3', marginTop: 2 }}
       />
       {errors.password?.message && (
         <p style={{ color: "#EF4444" }}>{errors.password?.message}</p>
@@ -80,7 +80,7 @@ function Register() {
         name="confirmPassword"
         placeholder="********"
         inputProps={register("confirmPassword")}
-        sx={{ width: '100%', backgroundColor: '#141937', borderRadius: 1, borderColor: '#ffe3a3', marginTop: 2 }}
+        sx={{ width: '100%', backgroundColor: '#141414', borderRadius: 1, borderColor: '#ffe3a3', marginTop: 2 }}
       />
       {errors.confirmPassword?.message && (
         <p style={{ color: "#EF4444" }}>{errors.confirmPassword?.message}</p>

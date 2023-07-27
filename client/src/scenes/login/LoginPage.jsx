@@ -14,7 +14,7 @@ export function LoginPage() {
     textAlign: 'center',
     marginLeft: '10%',
     marginRight: '10%',
-    color: '#7DF9FF'
+    color: '#00AAE4'
   });
   
   const { signin, errors: loginErrors, isAuthenticated } = useAuth();
@@ -44,7 +44,7 @@ export function LoginPage() {
     <section className="bg-red-500 flex justify-center items-center">
     <header className="bg-zinc-800 p-10">
       <StyledH1>BIENVENID@S A ESCALMEC</StyledH1>
-    <Container maxWidth="sm" sx={{ border: 1, borderRadius: 5, borderColor: '#7DF9FF', padding: 3, alignItems: 'center', justifyContent: 'center', height: '50vh', marginTop: 10 }}>
+    <Container maxWidth="sm" sx={{ border: 1, borderRadius: 5, borderColor: '#00AAE4', padding: 3, alignItems: 'center', justifyContent: 'center', height: '50vh', marginTop: 10 }}>
         {loginErrors.map((error, i) => (
           <Message message={error} key={i} />
         ))}
@@ -62,7 +62,7 @@ export function LoginPage() {
             name="email"
             placeholder="youremail@domain.tld"
             inputProps={register("email", { required: true })}
-            sx={{ width: '100%', backgroundColor: '#332a14', borderRadius: 1, borderColor: '#ffe3a3', marginTop: 2 }}
+            sx={{ width: '100%', backgroundColor: '#141414', borderRadius: 1, borderColor: '#7DF9FF', marginTop: 2 }}
           />
           {errors.email?.message && (
             <p style={{ color: "#EF4444" }}>{errors.email?.message}</p>
@@ -73,7 +73,7 @@ export function LoginPage() {
             name="password"
             placeholder="********"
             inputProps={register("password", { required: true, minLength: 6 })}
-            sx={{ width: '100%', backgroundColor: '#0045A4', borderRadius: 1, borderColor: '#ffe3a3', marginTop: 2 }}
+            sx={{ width: '100%', backgroundColor: '#141414', borderRadius: 1, borderColor: '#7DF9FF', marginTop: 2 }}
           />
           {errors.password?.message && (
             <p style={{ color: "#EF4444" }}>{errors.password?.message}</p>
@@ -94,7 +94,7 @@ export function LoginPage() {
         </form>
 
         <p className="flex gap-x-2 justify-between">
-          No tienes una cuenta ? <Link style={{ color: "#60A5FA", fontSize: "small", marginLeft: "1" }} to="/register" className="text-sky-500">Registrarme</Link>
+          No tienes una cuenta ? <Link style={{ color: "#00AAE4", fontSize: "small", marginLeft: "1" }} to="/register" className="text-sky-500">Registrarme</Link>
         </p>
     </Container>
     </header>
