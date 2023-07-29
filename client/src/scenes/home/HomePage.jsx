@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import SendIcon from '@mui/icons-material/Send';
-import { Button, Container, Grid, TextField, Select, MenuItem, InputLabel, useTheme, FormControl } from "@mui/material";
+import { Button, Container, Grid, TextField, Select, MenuItem, useTheme, FormControl } from "@mui/material";
+import InputLabel from "@mui/material/InputLabel";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
-import { productOption, vendorOption } from 'constants/general';
+import { productOption, vendorOption, fixService } from 'constants/general';
 import { styled } from '@mui/system';
 import TransactionPDF from 'components/TransactionPDF';
 import { PDFViewer } from '@react-pdf/renderer';
@@ -14,14 +15,12 @@ function HomePage() {
   const [facturaData, setFacturaData] = useState(null);
   const userId = useSelector((state) => state.global.userId);
   const theme = useTheme();
-  const [clientName, setClientName] = useState('');
-  const [route, setRoute] = useState('');
-  const [commerceName, setCommerceName] = useState('');
-  const [city, setCity] = useState('');
+  const [name, setName] = useState('');
+  const [nit, setNit] = useState('');
+  const [phoneNumber, setPhoneNumer] = useState('');
   const [billNumber, setBillNumber] = useState('');
-  const [cellphoneNumber, setCellphoneNumber] = useState('');
-  const [vendorName, setVendorName] = useState('');
-  const [customerAdress, setCustomerAdress] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
   const [products, setProducts] = useState([]);
   const [totalValue, setTotalValue] = useState(0);
   const [estado, setEstado] = useState('');
@@ -45,10 +44,6 @@ function HomePage() {
     margin: '0 auto',
     textAlign: 'center',
   });
-
-  const handleVendorChange = (event) => {
-    setVendorName(event.target.value);
-  };
 
   const handleProductChange = (productId, field, value) => {
     const updatedProducts = products.map((product) => {
@@ -87,15 +82,12 @@ function HomePage() {
     e.preventDefault();
 
     const facturaData = {
-      userId,
-      clientName,
-      route,
-      commerceName,
-      city,
+      name,
+      nit,
+      phoneNumber,
+      email,
       billNumber,
-      cellphoneNumber,
-      vendorName,
-      customerAdress,
+      address,
       products: products.map((product) => ({
         ...product,
         unitValue: product.unitValue
@@ -146,8 +138,8 @@ function HomePage() {
               <TextField 
               label="Nombre del cliente" 
               fullWidth
-              value={clientName}
-              onChange={(e) => setClientName(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               InputLabelProps={{ shrink: true, borderRadius: 4 }}
               variant="outlined"
               inputProps={{ style: { color: '#ffe3a3' } }}
@@ -156,9 +148,9 @@ function HomePage() {
             </Grid>
             <Grid item xs={6}>
               <TextField
-                label="Ruta de venta"
-                value={route}
-                onChange={(e) => setRoute(e.target.value)}
+                label="Telefono de contacto"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumer(e.target.value)}
                 InputLabelProps={{ shrink: true }}
                 variant="outlined"
                 inputProps={{ style: { color: '#ffe3a3' } }}
@@ -167,9 +159,9 @@ function HomePage() {
             </Grid>
             <Grid item xs={6}>
               <TextField
-                label="Nombre de Barbería o comercio"
-                value={commerceName}
-                onChange={(e) => setCommerceName(e.target.value)}
+                label="Correo electronico"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 InputLabelProps={{ shrink: true }}
                 inputProps={{ style: { color: '#ffe3a3' } }}
                 variant="outlined"
@@ -178,67 +170,14 @@ function HomePage() {
             </Grid>
             <Grid item xs={4}>
               <TextField
-                label="Ciudad"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
+                label="Direccion"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 InputLabelProps={{ shrink: true }}
                 variant="outlined"
                 inputProps={{ style: { color: '#ffe3a3' } }}
                 sx={{ width: '100%', backgroundColor: '#141937', borderRadius: 1 }}
               />
-            </Grid>
-            <FormControl 
-                variant="filled" 
-                sx={{ m: 1, minWidth: 250, marginTop: 2.6 }}
-                >
-                <InputLabel id="demo-simple-select-filled-label">Vendedor</InputLabel>
-                <Select
-                  labelId="demo-simple-select-filled-label"
-                  id="demo-simple-select-filled"
-                  value={vendorName}
-                  onChange={handleVendorChange}
-                >
-                {vendorOption.map((item) => (
-                  <MenuItem key={item.name} value={item.name}>
-                    {item.name}
-                  </MenuItem>
-                ))}
-                </Select>
-              </FormControl>
-            <Grid item xs={6}>
-              <TextField 
-              label="Celular del cliente"
-              value={cellphoneNumber}
-              onChange={(e) => setCellphoneNumber(e.target.value)}
-              InputLabelProps={{ shrink: true }}
-              inputProps={{ style: { color: '#ffe3a3' } }}
-              variant="outlined" 
-              sx={{ width: '100%', backgroundColor: '#141937', borderRadius: 1 }}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField 
-              label="Direccion del cliente" 
-              value={customerAdress}
-              onChange={(e) => setCustomerAdress(e.target.value)}
-              InputLabelProps={{ shrink: true }}
-              inputProps={{ style: { color: '#ffe3a3' } }}
-              variant="outlined" 
-              sx={{ width: '100%', backgroundColor: '#141937', borderRadius: 1 }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              {/* <TextField 
-              label="Nombre del vendedor" 
-              fullWidth
-              value={vendorName}
-              onChange={(e) => setVendorName(e.target.value)}
-              InputLabelProps={{ shrink: true, borderRadius: 4 }}
-              variant="outlined"
-              inputProps={{ style: { color: '#ffe3a3' } }}
-              sx={{ width: '100%', backgroundColor: '#141937', borderRadius: 1, borderColor: '#ffe3a3' }}
-              /> */}
-              
             </Grid>
               {products.map((product, index) => (
                 <Grid  
@@ -248,22 +187,34 @@ function HomePage() {
                   justifyContent="center"
                   container spacing={2}
                 >
-                  <FormControl 
-                  variant="filled" 
+                  <FormControl
+                  variant="filled"
                   sx={{ m: 1, minWidth: 250, marginTop: 2.6 }}
                   >
-                    <InputLabel id="demo-simple-select-filled-label">Producto/s</InputLabel>
+                    <InputLabel htmlFor="grouped-native-select">Producto/s</InputLabel>
                     <Select
-                      labelId="demo-simple-select-filled-label"
-                      id="demo-simple-select-filled"
+                      native 
+                      defaultValue=""
+                      label="Productos"
+                      id="grouped-native-select"
                       value={product.description}
                       onChange={(e) => handleProductChange(product.id, 'description', e.target.value)}
                     >
-                    {productOption.map((item) => (
-                      <MenuItem key={item.name} value={item.name}>
-                        {item.name}
-                      </MenuItem>
-                    ))}
+                    <option aria-label="None" value="" />
+                    <optgroup label="Alquiler">
+                      {productOption.map((item) => (
+                        <option key={item.value} value={item.name}>
+                          {item.name}
+                        </option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Reparacion">
+                      {fixService.map((item) => (
+                        <option key={item.value} value={item.name}>
+                          {item.name}
+                        </option>
+                      ))}
+                    </optgroup>
                     </Select>
                     
                   </FormControl>
@@ -282,17 +233,6 @@ function HomePage() {
                   <div>
                   Valor total: {product.totalValue}
                   </div>
-                  <Grid item xs={6}>
-                    <TextField
-                    label="Doce Pa Trece ? (Solo cantidad)"
-                    value={product.docePaTrece}
-                    onChange={(e) => handleProductChange(product.id ,'docePaTrece', e.target.value)}
-                    InputLabelProps={{ shrink: true }}
-                    inputProps={{ style: { color: '#ffe3a3' }, type: 'Number', min: 0 }}
-                    variant="outlined"
-                    sx={{ width: '100%', backgroundColor: '#141937', borderRadius: 1, color: '#997d3d' }}
-                    />
-                  </Grid>
                 </Grid>
               ))}
             <Button color="secondary" type="button" onClick={handleAddProduct} sx={{ marginTop: '15px' }}>Añadir un producto</Button>
