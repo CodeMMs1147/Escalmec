@@ -16,8 +16,8 @@ const facturaSchema = new mongoose.Schema(
         description: String,
         units: Number,
         unitValue: Number,
+        iva: Number,
         totalValue: Number,
-        docePaTrece: Number
       }
     ],
     totalValue: Number,
