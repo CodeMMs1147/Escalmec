@@ -2,15 +2,15 @@ import mongoose from "mongoose";
 
 const facturaSchema = new mongoose.Schema(
   {
-    userId: { type: mongoose.Types.ObjectId },
-    clientName: String,
-    route: String,
-    commerceName: String,
-    city: String,
+    name: String,
+    nit: Number,
+    phoneNumber: String,
+    email: {
+      type: String,
+      unique: true,
+    },
+    address: String,
     billNumber: Number,
-    cellphoneNumber: Number,
-    vendorName: String,
-    customerAdress: String,
     products: [
       {
         description: String,
@@ -21,7 +21,6 @@ const facturaSchema = new mongoose.Schema(
       }
     ],
     totalValue: Number,
-    estado: String,
   }
 );
 

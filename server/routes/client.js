@@ -6,6 +6,7 @@ import {
   getProducts,
   createProduct,
   getCustomers,
+  createCustomers,
   getTransactions,
   getFacturas,
   getGeography,
@@ -20,6 +21,8 @@ router.post("/productos", upload.single('image'), createProduct);
 router.use("/uploads", express.static("uploads"));
 
 router.get("/clientes", getCustomers);
+
+router.post("/clientes", createCustomers);
 // router.get("/transactions", getTransactions);
 router.get("/facturas", getFacturas);
 // router.get("/geography", getGeography);

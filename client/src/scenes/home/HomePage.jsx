@@ -7,13 +7,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import { productOption, vendorOption, fixService } from 'constants/general';
 import { styled } from '@mui/system';
-import TransactionPDF from 'components/TransactionPDF';
-import { PDFViewer } from '@react-pdf/renderer';
 
 function HomePage() {
 
   const [facturaData, setFacturaData] = useState(null);
-  const userId = useSelector((state) => state.global.userId);
   const theme = useTheme();
   const [name, setName] = useState('');
   const [nit, setNit] = useState('');
@@ -27,9 +24,6 @@ function HomePage() {
   const [totalIva, setTotalIva] = useState(0);
   const [estado, setEstado] = useState('');
   const [datosEnviados, setDatosEnviados] = useState(false);
-
-  // PDF
-  const [verPdf, setVerPdf] = useState(false);
 
 
 
@@ -80,7 +74,7 @@ function HomePage() {
   };
 
   const handleAddProduct = () => {
-    const newProduct = { id: Date.now() ,description: '', units: 1, unitValue: 0 , docePaTrece: 0, totalValue: 0};
+    const newProduct = { id: Date.now() ,description: '', units: 1, unitValue: 0 , iva: 0, totalValue: 0};
     setProducts([...products, newProduct]);
   };
 
@@ -102,17 +96,17 @@ function HomePage() {
       estado,
     };
 
-    // const clientData = {
-    //   userId,
-    //   clientName,
-    //   commerceName,
-    //   city,
-    //   cellphoneNumber,
-    //   customerAdress,
-    // };
+    const clientData = {
+      name,
+      nit,
+      phoneNumber,
+      email,
+      address,
+    };
 
     try {
       await axios.post(`${process.env.REACT_APP_BASE_URL}/sales/sales`, facturaData);
+      await axios.post(`${process.env.REACT_APP_BASE_URL}/client/clientes`, clientData);
       // await axios.post(`${process.env.REACT_APP_BASE_URL}/auth/register`, clientData);
       setFacturaData(facturaData);
       setDatosEnviados(true);

@@ -1,6 +1,7 @@
 import Product from "../models/Product.js";
 import ProductStat from "../models/ProductStat.js";
 import User from "../models/User.js";
+import Client from "../models/Client.js"
 import Factura from "../models/Factura.js";
 import Transaction from "../models/Transaction.js";
 import fs, { readFileSync } from "fs";
@@ -64,6 +65,32 @@ export const getCustomers = async (req, res) => {
   try {
     const customers = await User.find({ role: "user" }).select("-password");
     res.status(200).json(customers);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const createCustomers = async (req, res) => {
+  try {
+    const {
+      name,
+      nit,
+      phoneNumber,
+      email,
+      address,
+    } = req.body;
+
+    const newClient = await Client.create({
+      name,
+      nit,
+      phoneNumber,
+      email,
+      address
+    });
+
+    await newClient.save();
+
+    res.status(201).json({ newClient });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

@@ -14,33 +14,25 @@ export const getSales = async (req, res) => {
 export const  createSale = async (req, res) => {
   try {
     const {
-      userId,
-      clientName,
-      route,
-      commerceName,
-      city,
+      name,
+      nit,
+      phoneNumber,
+      email,
+      address,
       billNumber,
-      cellphoneNumber,
-      vendorName,
-      customerAdress,
       products,
-      totalValue,
-      estado
+      totalValue
     } = req.body;
   
     const newSale = new Factura({
-      userId,
-      clientName,
-      route,
-      commerceName,
-      city,
+      name,
+      nit,
+      phoneNumber,
+      email,
+      address,
       billNumber,
-      cellphoneNumber,
-      vendorName,
-      customerAdress,
       products,
-      totalValue,
-      estado
+      totalValue
     });
     
     const saleSaved = await newSale.save();
