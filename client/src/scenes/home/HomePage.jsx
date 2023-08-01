@@ -1,4 +1,5 @@
 import SendIcon from '@mui/icons-material/Send';
+import { Link } from "react-router-dom";
 import { Button, Container, Grid, TextField, Select, useTheme, FormControl, Table, TableHead, TableBody, TableRow, TableCell, TableContainer, Paper, Accordion, AccordionSummary, AccordionDetails, Box,
   Card,
   CardActions,
@@ -8,7 +9,7 @@ import { Button, Container, Grid, TextField, Select, useTheme, FormControl, Tabl
   Typography,
   Rating,
   useMediaQuery, } from "@mui/material";
-  import { ReceiptLongOutlined } from "@mui/icons-material";
+import EngineeringIcon from '@mui/icons-material/Engineering';
 import Header from "components/Header";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import InputLabel from "@mui/material/InputLabel";
@@ -39,24 +40,13 @@ const Product = ({
         borderRadius: "0.55rem",
       }}
     >
-      <CardMedia component="img" height="300" src={`${process.env.REACT_APP_BASE_URL}/client/uploads/${image}`} alt="barberBoss.png" />
+      <CardMedia component="img" height="300" src={`${process.env.REACT_APP_BASE_URL}/client/uploads/${image}`} alt="escalmec.png" />
       <CardContent>
-      <Typography
-          sx={{ fontSize: 14 }}
-          color={theme.palette.secondary[700]}
-          gutterBottom
-        >
-          {category}
-        </Typography>
         <Typography variant="h5" component="div">
           {name}
         </Typography>
-        <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[400]}>
-          ${Number(price).toFixed(2)}
-        </Typography>
+        
         <Rating value={rating} readOnly />
-
-        <Typography variant="body2">{description}</Typography>
       </CardContent>
       <CardActions>
         <Button
@@ -76,14 +66,11 @@ const Product = ({
         }}
       >
         <CardContent>
-          <Typography>id: {_id}</Typography>
+          <Typography variant="body2">{description}</Typography>
+          <Typography sx={{ mb: "1.5rem" }} color={theme.palette.secondary[400]}>
+          ${Number(price).toFixed(2)}
+        </Typography>
           <Typography>Unidades disponibles: {supply}</Typography>
-          <Typography>
-            Unidades vendidas este año: {stat}
-          </Typography>
-          <Typography>
-            Unidades vendidas  este año: {stat}
-          </Typography>
         </CardContent>
       </Collapse>
     </Card>
@@ -219,9 +206,24 @@ function HomePage() {
   return (
   <section className="bg-red-500 flex justify-center items-center">
     <header className="bg-zinc-800 p-10">
-      <Accordion sx={{ marginTop: '20px' }}>
+      <Accordion sx={{}}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel-content">
           <StyledH1>Cotizar</StyledH1>
+          <Link to="/login" className="text-sky-500">
+            <Button
+              sx={{
+                backgroundColor: theme.palette.secondary.light,
+                color: theme.palette.background.alt,
+                fontSize: "14px",
+                fontWeight: "bold",
+                padding: "10px 20px",
+                alignContent: 'flex-end'
+              }}
+            >
+              <EngineeringIcon sx={{ mr: "10px" }} />
+              Iniciar sesión
+            </Button>
+          </Link>
         </AccordionSummary>
         <AccordionDetails>
         <Container maxWidth="md" sx={{ border: 1, borderRadius: 5, padding: 3, borderColor: '#7DF9FF' }}>

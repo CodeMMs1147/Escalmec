@@ -115,31 +115,14 @@ const Transactions = () => {
 
   const columns = [
     {
-      field: "clientName",
-      headerName: "Cliente",
+      field: "name",
+      headerName: "Nombre cliente",
       flex: 1,
     },
     {
-      field: "city",
-      headerName: "Ciudad",
+      field: "phoneNumber",
+      headerName: "Contacto",
       flex: 0.5,
-    },
-    {
-      field: "billNumber",
-      headerName: "# Factura",
-      flex: 0.5,
-    },
-    {
-      field: "cellphoneNumber",
-      headerName: "Celular",
-      flex: 1,
-    },
-    {
-      field: "vendorName",
-      headerName: "Vendedor",
-      flex: 1,
-      // sortable: false,
-      // renderCell: (params) => params.value.length, PONE EL LENGTH
     },
     {
       field: "customerAdress",
@@ -149,28 +132,28 @@ const Transactions = () => {
     },
     {
       field: "products",
-      headerName: "# of Products",
+      headerName: "Items cotizados",
       flex: 0.5,
       sortable: false,
       renderCell: (params) => params.value.length,
     },
     {
       field: "totalValue",
-      headerName: "Cost",
-      flex: 1,
+      headerName: "Valor total",
+      flex: 0.7,
       renderCell: (params) => `$${Number(params.value).toFixed(2)}`,
     },
     {
       field: "estado",
       headerName: "estado",
-      flex: 1,
+      flex: 0.5,
     },
   ];
 
   return (
     <>
       <Box m="1.5rem 2.5rem">
-        <Header title="LISTA DE FACTURAS" subtitle="Estas facturas fueron generadas y algunas fueron pagadas y otras no" />
+        <Header title="LISTA DE FACTURAS" subtitle="Estas cotizaciones se encuentran a la espera de aprobacion" />
         <Box
           height="120vh"
           sx={{
