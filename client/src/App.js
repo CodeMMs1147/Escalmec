@@ -38,7 +38,6 @@ function App() {
               {/* <Route path="/main" element={<Page />} /> */}
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
-              <Route path="/login" element={<LoginPage />} />
               {/* <Route path="/" element={<Navigate to="/dashboard" replace />} /> */}
               <Route element={<ProtectedRoute />}>
                 <Route element={<Layout />}>

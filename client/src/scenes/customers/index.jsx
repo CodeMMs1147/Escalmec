@@ -1,58 +1,45 @@
 import React from "react";
 import { Box, useTheme } from "@mui/material";
-import { useGetCustomersQuery } from "state/api";
+import { useGetClientsQuery } from "state/api";
 import Header from "components/Header";
 import { DataGrid } from "@mui/x-data-grid";
 
 const Customers = () => {
   const theme = useTheme();
-  const { data, isLoading } = useGetCustomersQuery();
+  const { data, isLoading } = useGetClientsQuery();
   console.log("data", data);
 
   const columns = [
     {
-      field: "_id",
-      headerName: "ID",
-      flex: 1,
-    },
-    {
       field: "name",
-      headerName: "Name",
-      flex: 0.5,
+      headerName: "Nombre",
+      flex: 0.7,
     },
     {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
+      field: "nit",
+      headerName: "NIT",
+      flex: 0.5,
     },
     {
       field: "phoneNumber",
-      headerName: "Phone Number",
-      flex: 0.5,
-      renderCell: (params) => {
-        return params.value.replace(/^(\d{3})(\d{3})(\d{4})/, "($1)$2-$3");
-      },
-    },
-    {
-      field: "country",
-      headerName: "Country",
+      headerName: "Numero de contacto",
       flex: 0.4,
     },
     {
-      field: "occupation",
-      headerName: "Occupation",
-      flex: 1,
+      field: "email",
+      headerName: "Correo",
+      flex: 0.6,
     },
     {
-      field: "role",
-      headerName: "Role",
+      field: "address",
+      headerName: "Dirección",
       flex: 0.5,
     },
   ];
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="CUSTOMERS" subtitle="List of Customers" />
+      <Header title="CLIENTES" subtitle="Esta la lista de clientes que han cotizado con Escalmec" />
       <Box
         mt="40px"
         height="75vh"

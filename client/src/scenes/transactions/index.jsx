@@ -119,18 +119,6 @@ const Transactions = () => {
       headerName: "Cliente",
       flex: 1,
     },
-    // {
-    //   field: "products.description",
-    //   headerName: "# de Productos",
-    //   flex: 0.5,
-    //   sortable: false,
-    //   renderCell: (params) => params.value.length,
-    // },
-    // {
-    //   field: "totalValue",
-    //   headerName: "Total",
-    //   flex: 1,
-    // },
     {
       field: "city",
       headerName: "Ciudad",
