@@ -17,6 +17,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { productOption, vendorOption, fixService } from 'constants/general';
 import { styled } from '@mui/system';
+import ModalPopup from 'components/ModalPopup';
 
 const Product = ({
   _id,
@@ -80,6 +81,7 @@ const Product = ({
 function HomePage() {
   const [facturaData, setFacturaData] = useState(null);
   const theme = useTheme();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState('');
   const [nit, setNit] = useState('');
   const [phoneNumber, setPhoneNumer] = useState('');
@@ -96,7 +98,6 @@ function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const isNonMobile = useMediaQuery("(min-width: 1000px)");
-
 
   const StyledH1 = styled('h1')({
     textAlign: 'center',
@@ -143,6 +144,10 @@ function HomePage() {
     const newProduct = { id: Date.now() ,description: '', units: 1, unitValue: 0 , iva: 0, totalValue: 0};
     setProducts([...products, newProduct]);
   };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -354,9 +359,18 @@ function HomePage() {
                   container spacing={2}
                   sx={{ marginTop: '5px'}}
                 >
-                <Button type="submit" variant="contained" endIcon={<SendIcon />}>
+                <Button onClick={handleOpenModal} variant="contained" endIcon={<SendIcon />}>
                   Confirmar compra
+                  {console.log(isModalOpen)}
                 </Button>
+                {isModalOpen &&
+                  <ModalPopup open={isModalOpen} onClose={() => setIsModalOpen(false)} /> 
+                }
+                {/* <Button type="submit" variant="contained" endIcon={<SendIcon />}>
+                  <ModalPopup text={'Confirmar'} open={isModalOpen} onClose>
+
+                  </ModalPopup>
+                </Button> */}
                 </Grid>
               </form>
             </Container>
