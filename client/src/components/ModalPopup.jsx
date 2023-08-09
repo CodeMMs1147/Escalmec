@@ -8,11 +8,7 @@ const ModalPopup = ({
 }) => {
 
   [open, openChange] = useState(false);
-
-  const openPopUp = () => {
-    openChange(true);
-  }
-
+  
   const closePopUp = () => {
     openChange(false);
   }

@@ -365,7 +365,7 @@ function HomePage() {
                 </Button>
                 {isModalOpen &&
                   <ModalPopup open={isModalOpen} onClose={() => setIsModalOpen(false)} /> 
-                }
+                } 
                 {/* <Button type="submit" variant="contained" endIcon={<SendIcon />}>
                   <ModalPopup text={'Confirmar'} open={isModalOpen} onClose>
 
